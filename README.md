@@ -15,5 +15,6 @@ Product Management only pulling hard coded data through OCELOT API GATEWAY - PRO
 
 
 The Purpose of adding Product management module is to show lazy loading modules structure in application.
+Loazy loading in action : https://github.com/mohsinafridi/My-Maqta-Test-FrontEnd/blob/master/src/assets/lazy%20loaded%20product%20module.PNG
 
 OCELOT Backend Project Link : https://github.com/mohsinafridi/My.Maqta.Project
