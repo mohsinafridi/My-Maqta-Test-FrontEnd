@@ -76,8 +76,8 @@ export class CreateEmployeeComponent implements OnInit {
       ],
       Phone: ["", [
         Validators.required,
-        Validators.minLength(PhoneNumberLength.length),
-        Validators.maxLength(PhoneNumberLength.length),
+        // Validators.minLength(PhoneNumberLength.length),
+        // Validators.maxLength(PhoneNumberLength.length),
       ],
       ]
 
@@ -89,9 +89,7 @@ export class CreateEmployeeComponent implements OnInit {
     // if (this.CreateEmployeeForm.invalid) {
     //   return;
     // }
-    // if (this.duplicateUserEmailError) {
-    //   return;
-    // }
+
     const createEmployee = this.CreateEmployeeForm.value;
     let model: Employee = {
       Id: 0,
