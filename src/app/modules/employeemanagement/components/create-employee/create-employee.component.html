@@ -1,0 +1,75 @@
+<!-- Form-->
+
+<h1 *ngIf="isAddMode">Add User</h1>
+<h1 *ngIf="!isAddMode">Edit User</h1>
+
+<form [formGroup]="CreateEmployeeForm" (ngSubmit)="onAddEmployee()" autocomplete="disabled">
+  <div class="">
+    <div class="control-group-block">
+      <div class="form-row">
+        <fieldset class="col-lg-4 form-group">
+          <label for="Firstname">First Name</label>
+          <div class="field-wrap">
+            <input type="text" id="Firstname" class="form-control" formControlName="Firstname" name="Firstname"
+              required="required" />
+            <div *ngIf="submitted && f['Firstname'].errors" class="errorMessage">
+              <span *ngIf="f['Firstname'].errors['required']">First Name is required.</span>
+              <span *ngIf="f['Firstname'].errors['pattern']">Enter valid First Name.</span>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="col-lg-4 form-group">
+          <label for="Lastname">Last Name</label>
+          <div class="field-wrap">
+            <input type="text" id="Lastname" class="form-control" formControlName="Lastname" name="Lastname"
+              required="required" />
+            <div *ngIf="submitted && f['Lastname'].errors" class="errorMessage">
+              <span *ngIf="f['Lastname'].errors['required']">Last Name is required.</span>
+              <span *ngIf="f['Lastname'].errors['pattern']">Enter valid Last Name.</span>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="col-lg-4 form-group">
+          <label for="email">Email</label>
+          <div class="field-wrap">
+            <input type="text" id="Email" class="form-control" formControlName="Email" name="Email"
+              required="required" />
+
+            <div *ngIf="submitted && f['Email'].errors" class="errorMessage">
+              <span *ngIf="f['Email'].errors['required']">Email is required.</span>
+              <span *ngIf="f['Email'].errors['maxlength']">Maximum 256 characters are allowed.</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="col-lg-4 form-group">
+          <label for="phone">Phone</label>
+          <div class="field-wrap">
+            <input autocomplete="disabled" type="text" class="form-control" formControlName="Phone" name="Phone"
+              placeholder="123 456 789 11" maxlength="14" required="required" />
+            <div *ngIf="submitted && f['Phone'].errors" class="errorMessage">
+              <span *ngIf="f['Phone'].errors['required']">Phone is required.</span>
+              <span *ngIf="f['Phone'].errors['maxlength']">Maximum 14 characters are allowed.</span>
+              <span *ngIf="f['Phone'].errors['minlength']">Minimum 10 digits are required.</span>
+            </div>
+          </div>
+        </fieldset>
+
+
+      </div>
+    </div>
+    <div class="row" style="margin-top:20px;">
+      <div class="col-md-6">
+        <button class="btn btn-primary mr-1" style="margin-right:20px;" type="button" (click)="navigateBack()">
+          << back </button>
+
+            <button class="btn btn-primary mr-1" type="submit">
+              {{ EmployeeAddOrUpdate }}
+            </button>
+
+
+      </div>
+    </div>
+
+  </div>
+</form>

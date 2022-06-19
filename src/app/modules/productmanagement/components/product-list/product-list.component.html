@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h3>Product List</h3>
+  </div>
+
+  <div class="row">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">UnitPrice</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <td><a routerLink="/product/list/{{product.id}}">{{product.id}}</a></td>
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.unitPrice}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
