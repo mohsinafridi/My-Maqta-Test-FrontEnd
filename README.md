@@ -1,6 +1,8 @@
 # MyTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+This is Front end part of the application.
+Clone the project and Run    `ng serve -o` to open the application in browser.
+Try to run on `http://localhost:4200/` default url  as CORS is only enabled for this url.
 
 ## Development server
 
