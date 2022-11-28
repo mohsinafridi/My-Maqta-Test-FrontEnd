@@ -1,0 +1,68 @@
+<h1 *ngIf="isAddMode">Add Book</h1>
+<h1 *ngIf="!isAddMode">Edit Book</h1>
+
+<form [formGroup]="AddBookForm" (ngSubmit)="onAddBook()" autocomplete="disabled">
+  <div class="">
+    <div class="control-group-block">
+      <div class="form-row">
+        <fieldset class="col-lg-4 form-group">
+          <label for="Name">Name</label>
+          <div class="field-wrap">
+            <input type="text" class="form-control" formControlName="name" name="name"
+              required="required" />
+            <div *ngIf="submitted && f['name'].errors" class="errorMessage">
+              <span *ngIf="f['name'].errors['required']">Book Name is required.</span>
+              <span *ngIf="f['name'].errors['pattern']">Enter valid Book Name.</span>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="col-lg-4 form-group">
+          <label for="Author">Author</label>
+          <div class="field-wrap">
+            <input type="text" class="form-control" formControlName="author" name="author"
+              required="required" />
+            <div *ngIf="submitted && f['author'].errors" class="errorMessage">
+              <span *ngIf="f['author'].errors['required']">Author is required.</span>
+              <span *ngIf="f['author'].errors['pattern']">Enter valid Author.</span>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="col-lg-4 form-group">
+          <label for="price">Price</label>
+          <div class="field-wrap">
+            <input type="text" class="form-control" formControlName="price" name="price" required="required" />
+            <div *ngIf="submitted && f['price'].errors" class="errorMessage">
+              <span *ngIf="f['price'].errors['required']">Price is required.</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="col-lg-4 form-group">
+          <label for="category">Category</label>
+          <div class="field-wrap">
+            <input autocomplete="disabled" type="text" class="form-control" formControlName="Category" 
+            name="Category" maxlength="14" required="required" />
+            <div *ngIf="submitted && f['Category'].errors" class="errorMessage">
+              <span *ngIf="f['Category'].errors['required']">Category is required.</span>
+            </div>
+          </div>
+        </fieldset>
+
+
+      </div>
+    </div>
+    <div class="row" style="margin-top:20px;">
+      <div class="col-md-6">
+        <button class="btn btn-primary mr-1" style="margin-right:20px;" type="button" (click)="navigateBack()">
+          << back </button>
+
+            <button class="btn btn-primary mr-1" type="submit">
+              {{ AddOrUpdateBook }}
+            </button>
+
+
+      </div>
+    </div>
+
+  </div>
+</form>

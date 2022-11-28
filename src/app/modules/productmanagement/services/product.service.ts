@@ -8,7 +8,7 @@ import {
 } from "rxjs";
 import { Product } from '../models/product';
 
-let baseUrl = 'https://localhost:5003/Product';
+let baseUrl = 'https://fakestoreapi.com/products';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,13 +17,12 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getAllProducts(): Observable<HttpResponse<Product>> {
-    return this.httpClient.get<any>(baseUrl, { observe: "response" })
-      .pipe(catchError(this.handleError));
+  getProducts(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(baseUrl);
   }
 
-  private handleError(res: HttpErrorResponse | any) {
-    return observableThrowError(res);
+  getProductById(id:any): Observable<Product> {    
+    return this.httpClient.get<Product>("https://fakestoreapi.com/products/"+id);
   }
 }
 

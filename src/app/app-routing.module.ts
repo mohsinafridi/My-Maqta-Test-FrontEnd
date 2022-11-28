@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from "@angular/router";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -19,6 +20,11 @@ const routes: Routes = [
     path: "product",
     loadChildren: () => import("./modules/productmanagement/productmanagement.module")
       .then(m => m.ProductmanagementModule)
+  },
+  {
+    path: "book",
+    loadChildren: () => import("./modules/bookmanagement/bookmanagement.module")
+      .then(m => m.BookmanagementModule)
   },
   { path: '**', component: PageNotFoundComponent }
 ];
