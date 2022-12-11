@@ -1,0 +1,47 @@
+<p>
+  
+</p>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <input type="button" value="Add Note" clas="btn btn-default" (click)="goToAddNote()"/>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <h3>Notes </h3>
+  </div>
+
+  <div class="row">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Note</th>
+          <th scope="col">Created Date</th>          
+          <th scope="col">Actions</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let note of notes; let i = index">
+          <td>{{note.id}}</td>
+          <td>{{note.content}}</td>
+          <td>{{note.createdAt | date:'medium'}}</td>                    
+          <td>
+            <a routerLink="/note/edit/{{note.id}}">Edit</a> |
+            <a href="#" (click)="onDeleteNote(note.id)">Delete</a>
+          </td>
+        </tr>
+        <!-- <tr *ngIf="!isRecordFound" colspan="4">
+          <p style="color: red;">No record found.</p>
+        </tr> -->
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
