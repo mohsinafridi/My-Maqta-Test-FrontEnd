@@ -31,17 +31,17 @@ export class GetBooksComponent implements OnInit {
     );
   }
 
-  onDeleteEmployee(id: string) {debugger
-    return this.bookService.deleteBookById(id).subscribe(
-      () => {
-        debugger
-        this.router.navigate(['/book/list']);
+  onDeleteBook(id: string) {
+    return this.bookService.deleteBookById(id).subscribe({
+      next: (res) => {
+        debugger;
+        this.getBooks();
       },
-      (error) => {
-        debugger
-        this.router.navigate(['/book/list']);
+      error: (error) => {
+        debugger;
+        console.log(error);
         this.notifyService.showError('Error occur while deleting a book.');
-      }
-    );
+      },
+    });
   }
 }

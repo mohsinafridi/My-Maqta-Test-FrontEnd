@@ -24,7 +24,7 @@
           <td>{{book.category}}</td>
           <td>
             <a routerLink="/book/edit/{{book.id}}">Edit</a> |
-            <a href="" (click)="onDeleteEmployee(book.id)">Delete</a>
+            <a href="/book/list" (click)="onDeleteBook(book.id)">Delete</a>
           </td>
         </tr>
       </tbody>

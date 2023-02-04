@@ -1,7 +1,7 @@
-export interface Book {
-    Id: number,
-    Name: string,
-    Author: string,
-    Category: string,
-    Price: number
+export interface IBook {
+  id: number;
+  name: string;
+  author: string;
+  category: string;
+  price: number;
 }
