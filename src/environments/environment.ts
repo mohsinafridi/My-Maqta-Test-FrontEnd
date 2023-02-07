@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   api_base_url: 'https://localhost:5000/',
+  book_api: 'http://localhost:81/api/book',
+  notes_api: 'http://localhost:85/api/notes',
 };
 
 /*
