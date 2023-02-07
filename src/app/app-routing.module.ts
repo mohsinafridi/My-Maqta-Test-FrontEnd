@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'employee',
+    redirectTo: 'login',
   },
   {
     path: 'employee',
@@ -38,7 +38,8 @@ const routes: Routes = [
         (m) => m.NotemanagementModule
       ),
   },
-  { path: '**', component: PageNotFoundComponent },
+  { path: 'login', component: LoginComponent },  
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
