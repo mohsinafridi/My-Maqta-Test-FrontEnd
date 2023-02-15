@@ -1,62 +1,50 @@
-<div class="col-md-12">
-  <div class="card card-container">
-    <!-- <img 
-      id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
-    /> -->
-    <form
-      *ngIf="!isLoggedIn"
-      name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm"
-      novalidate
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form  *ngIf="!isLoggedIn"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate>
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="login"
+      [(ngModel)]="form.username"
+      required
+      #username="ngModel"
+      />
+      <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="username.errors && f.submitted"
     >
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          name="username"
-          [(ngModel)]="form.username"
-          required
-          #username="ngModel"
-        />
-        <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="username.errors && f.submitted"
-        >
-          Username is required!
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          name="password"
-          [(ngModel)]="form.password"
-          required
-          minlength="6"
-          #password="ngModel"
-        />
-        <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="password.errors && f.submitted"
-        >
-          <div *ngIf="password.errors['required']">Password is required</div>
-          <div *ngIf="password.errors['minlength']">
-            Password must be at least 6 characters
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-block">
-          Login
-        </button>
-      </div>
+      Username is required!
+    </div>
+      
+    <input
+      type="text"
+      name="password" class="fadeIn third" 
+      [(ngModel)]="form.password"
+      required
+      minlength="6" placeholder="password"
+      #password="ngModel" />
+      
+      <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="password.errors && f.submitted"
+    >
+      <div *ngIf="password.errors['required']">Password is required</div>
+      <div *ngIf="password.errors['minlength']">
+        Password must be at least 6 characters
+      </div> </div>
+
+      <input type="submit" class="fadeIn fourth" value="Log In">
       <div class="form-group">
         <div
           class="alert alert-danger"
@@ -68,8 +56,10 @@
       </div>
     </form>
 
-    <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in as {{ roles }}.
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
+
   </div>
 </div>

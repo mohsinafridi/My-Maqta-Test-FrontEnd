@@ -1,15 +1,17 @@
 <h1 *ngIf="isAddMode">Add Book</h1>
 <h1 *ngIf="!isAddMode">Edit Book</h1>
 
-<form [formGroup]="AddBookForm" (ngSubmit)="onAddBook()" autocomplete="disabled">
+<form [formGroup]="AddBookForm" (ngSubmit)="onAddBook()">
   <div class="">
     <div class="control-group-block">
       <div class="form-row">
         <fieldset class="col-lg-4 form-group">
           <label for="Name">Name</label>
           <div class="field-wrap">
+            <input type="hidden" name="id"  formControlName="id"/><br />
+            
             <input type="text" class="form-control" formControlName="name" name="name"
-              required="required" />
+               />
             <div *ngIf="submitted && f['name'].errors" class="errorMessage">
               <span *ngIf="f['name'].errors['required']">Book Name is required.</span>
               <span *ngIf="f['name'].errors['pattern']">Enter valid Book Name.</span>

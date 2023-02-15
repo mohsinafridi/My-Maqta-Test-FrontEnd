@@ -10,7 +10,7 @@ import { throwError as observableThrowError, Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
-let bookUrl = environment.book_api;
+let bookUrl = environment.api_base_url + 'book';
 
 @Injectable({
   providedIn: 'root',

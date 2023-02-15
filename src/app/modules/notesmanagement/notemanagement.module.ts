@@ -6,9 +6,10 @@ import { NotemanagementRoutingModule } from './notemanagement-routing.module';
 import { NoteListComponent } from './components/note-list/note-list.component';
 import { AddNoteComponent } from './components/add-note/add-note.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DatetimeFormatPipe } from 'src/app/core/pipes/datetime.pipe';
 
 @NgModule({
-  declarations: [AddNoteComponent, NoteListComponent],
+  declarations: [AddNoteComponent, NoteListComponent, DatetimeFormatPipe],
   imports: [
     CommonModule,
     NotemanagementRoutingModule,

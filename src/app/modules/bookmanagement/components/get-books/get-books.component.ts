@@ -34,14 +34,16 @@ export class GetBooksComponent implements OnInit {
   onDeleteBook(id: string) {
     return this.bookService.deleteBookById(id).subscribe({
       next: (res) => {
-        debugger;
         this.getBooks();
       },
       error: (error) => {
-        debugger;
         console.log(error);
         this.notifyService.showError('Error occur while deleting a book.');
       },
     });
+  }
+
+  goToAddBook() {
+    this.router.navigate(['/book/add']);
   }
 }

@@ -10,14 +10,6 @@ const routes: Routes = [
     redirectTo: 'login',
   },
   {
-    path: 'employee',
-    loadChildren: () =>
-      import('./modules/employeemanagement/employeemanagement.module').then(
-        (m) => m.EmployeemanagementModule
-      ),
-  },
-
-  {
     path: 'product',
     loadChildren: () =>
       import('./modules/productmanagement/productmanagement.module').then(
@@ -38,8 +30,8 @@ const routes: Routes = [
         (m) => m.NotemanagementModule
       ),
   },
-  { path: 'login', component: LoginComponent },  
-  { path: '**', component: PageNotFoundComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

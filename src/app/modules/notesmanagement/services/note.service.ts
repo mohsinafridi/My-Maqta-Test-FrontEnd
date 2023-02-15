@@ -4,7 +4,7 @@ import { catchError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Note } from '../models/note';
 
-const baseUrl = environment.notes_api;
+const baseUrl = environment.api_base_url + 'notes';
 
 @Injectable({
   providedIn: 'root',
