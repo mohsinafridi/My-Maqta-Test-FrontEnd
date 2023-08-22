@@ -12,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'employee',
+   
     loadChildren: () =>
       import('./modules/employeemanagement/employeemanagement.module').then(
         (m) => m.EmployeemanagementModule
@@ -39,8 +40,8 @@ const routes: Routes = [
         (m) => m.NotemanagementModule
       ),
   },
-  { path: 'login', component: LoginComponent },
-  { path: '**', component: PageNotFoundComponent },
+  { path: 'login', component: LoginComponent },  
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
