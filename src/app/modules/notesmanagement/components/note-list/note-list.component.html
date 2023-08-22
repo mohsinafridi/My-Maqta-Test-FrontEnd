@@ -1,16 +1,13 @@
-<p>
-  
-</p>
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <input type="button" value="Add Note" clas="btn btn-default" (click)="goToAddNote()"/>
+      <input type="button" 
+      value="Add Note" 
+      class="btn btn-primary" 
+      (click)="goToAddNote()"/>
     </div>
   </div>
-
-
+  
   <div class="row">
     <h3>Notes </h3>
   </div>
@@ -30,7 +27,7 @@
         <tr *ngFor="let note of notes; let i = index">
           <td>{{note.id}}</td>
           <td>{{note.content}}</td>
-          <td>{{note.createdAt | date:'medium'}}</td>                    
+          <td>{{note.createdAt | datetimeFormat }}</td>                    
           <td>
             <a routerLink="/note/edit/{{note.id}}">Edit</a> |
             <a href="#" (click)="onDeleteNote(note.id)">Delete</a>

@@ -37,20 +37,30 @@ export class AddNoteComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.id = +params['id'];
-      if (this.id > 0) {
-        this.noteService
-          .getNoteById(this.id)
-          .pipe(first())
-          .subscribe((x) => this.noteForm.patchValue(x));
-        this.isAddMode = false;
-      }
-    });
+    debugger;
+    this.id = this.route.snapshot.params['id'];
+    //  this.route.params.subscribe((params: Params) => {
+    // this.id = +params['id'];
+    if (this.id > 0) {
+      this.noteService
+        .getNoteById(this.id)
+        .pipe(first())
+        .subscribe({
+          next: (data) => {
+            this.noteForm.patchValue(data);
+          },
+          error: (error) => {
+            this.notifyService.showError('Error occur while getting notes.');
+          },
+        });
+      this.isAddMode = false;
+      this.NoteAddOrUpdate = 'Update note';
+    }
+    //  });
 
     this.noteForm = this.fb.group({
       id: new FormControl(this.getRandomInt(1000)),
-      note: ['', [Validators.required, Validators.maxLength(256)]],
+      content: ['', [Validators.required, Validators.maxLength(256)]],
       createdAt: ['', [Validators.required]],
     });
   }
@@ -109,7 +119,7 @@ export class AddNoteComponent implements OnInit {
   }
 
   navigateBack() {
-    this.router.navigate(['/employee/list']);
+    this.router.navigate(['/note/list']);
   }
 
   getRandomInt(max: any) {

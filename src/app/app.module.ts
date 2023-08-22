@@ -12,12 +12,12 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [			
+  declarations: [
     AppComponent,
-    PageNotFoundComponent,      
-      LoginComponent,
-      ProfileComponent
-   ],
+    PageNotFoundComponent,
+    LoginComponent,
+    ProfileComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -27,7 +27,8 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
+  // exports: [DatetimeFormatPipe],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

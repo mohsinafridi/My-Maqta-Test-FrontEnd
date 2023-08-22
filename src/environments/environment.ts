@@ -4,7 +4,13 @@
 
 export const environment = {
   production: false,
+  auth_api: 'http://localhost:90/api/Account',
   api_base_url: 'https://localhost:5000/',
+  book_api: 'http://localhost:81/api/book',
+  // notes_api: 'https://localhost:5000/notes',
+  customer_api: '',
+  order_api: '',
+  product_api: '',
 };
 
 /*

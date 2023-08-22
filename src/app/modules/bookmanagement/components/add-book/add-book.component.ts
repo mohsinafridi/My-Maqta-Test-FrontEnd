@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, first } from 'rxjs';
 import { RegexpPattern } from 'src/app/modules/shared/constant/constants';
 import { NotificationService } from 'src/app/modules/shared/services/notification.service';
 import { IBook } from '../../models/book';
@@ -37,36 +37,38 @@ export class AddBookComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    debugger;
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
-
     if (!this.isAddMode) {
-      this.AddOrUpdateBook = 'Update Book';
-      this.bookService.getBookById(this.id).subscribe((result) => {
-        this.AddBookForm.patchValue({
-          name: result.name,
-          author: result.author,
-          price: result.price,
-          category: result.category,
+      this.bookService
+        .getBookById(this.id)
+        .pipe(first())
+        .subscribe({
+          next: (result) => {
+            this.AddBookForm.patchValue(result);
+            this.AddOrUpdateBook = 'Update book';
+          },
+          error: (error) => {
+            this.notifyService.showError('Error occur while getting notes.');
+          },
         });
-      });
     }
 
     this.AddBookForm = this.fb.group({
-      Name: new FormControl(this.book.name, [
+      id: new FormControl(),
+      name: new FormControl([
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(30),
       ]),
 
-      Author: new FormControl(this.book.author, [
+      author: new FormControl([
         Validators.required,
         Validators.pattern(new RegExp(RegexpPattern.FirstLastName)),
       ]),
 
-      Price: new FormControl(this.book.price, [Validators.required]),
-      Category: new FormControl(this.book.category, [
+      price: new FormControl([Validators.required]),
+      category: new FormControl([
         Validators.required,
         Validators.pattern(new RegExp(RegexpPattern.FirstLastName)),
       ]),
@@ -109,7 +111,8 @@ export class AddBookComponent implements OnInit {
   }
 
   updateBook(request: IBook) {
-    this.bookService.updateBook(request).subscribe({
+    debugger;
+    this.bookService.updateBook(this.AddBookForm.value).subscribe({
       next: () => {
         this.notifyService.showSuccess('Book updated successfully.');
         this.router.navigate(['/book/list']);

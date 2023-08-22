@@ -3,16 +3,19 @@
 <h1 *ngIf="isAddMode">Add Note</h1>
 <h1 *ngIf="!isAddMode">Edit Note</h1>
 
-<form [formGroup]="noteForm" (ngSubmit)="onAddNote()" autocomplete="disabled">
+<form [formGroup]="noteForm" (ngSubmit)="onAddNote()">
   <div class="">
     <div class="control-group-block">
       <div class="form-row">
         <fieldset class="col-lg-4 form-group">
           <label for="Firstname">Note</label>
           <div class="field-wrap">  
-            <input type="text" id="note" class="form-control" 
-            formControlName="note" name="note"
-              required="required" />
+            <input type="hidden" name="id"  formControlName="id"/><br />
+          
+            <input type="text" class="form-control" 
+            formControlName="content" name="content"
+               />
+
             <div *ngIf="submitted && f['note'].errors" class="errorMessage">
               <span *ngIf="f['note'].errors['required']">Note is required.</span>
               <span *ngIf="f['note'].errors['pattern']">Enter valid Note.</span>
@@ -21,9 +24,9 @@
         </fieldset>
         <fieldset class="col-lg-4 form-group">
 
-          <label for="activeEndDate">Created At</label>
+          <label for="createdAt">Created At</label>
           <div class="field-wrap">
-            <input type="datetime-local" id="createdAt" class="form-control" formControlName="createdAt" name="createdAt"
+            <input type="datetime" class="form-control" formControlName="createdAt" name="createdAt"
               required="required" />
             <div *ngIf="submitted && f['createdAt'].errors" class="errorMessage">
               <span *ngIf="f['createdAt'].errors['required']">Created At is required.</span>
@@ -31,10 +34,6 @@
           </div> 
         </fieldset>
      
-
-
-
-
       </div>
     </div>
     <div class="row" style="margin-top:20px;">
