@@ -40,4 +40,8 @@ public getUser(): any {
   return {};
 }
 
+isLoggedIn(){
+  return !!sessionStorage.getItem(TOKEN_KEY);
+}
+
 }

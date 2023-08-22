@@ -7,6 +7,8 @@ import { CreateEmployeeComponent } from './components/create-employee/create-emp
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from '../../core/guard/authguard.service';
+import { AuthService } from '../../core/services/auth.service';
 @NgModule({
   declarations: [
     CreateEmployeeComponent,
@@ -17,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     EmployeemanagementRoutingModule,
     RouterModule
-  ]
+  ],
+  providers: [AuthService, AuthGuard],
 })
 export class EmployeemanagementModule { }

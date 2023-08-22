@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { AccountService } from '../core/account.service';
 import { TokenStorageService } from '../core/token-storage.service';
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,8 +19,7 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
 
 
-  constructor( private formBuilder: FormBuilder, private tokenStorage: TokenStorageService,
-    private route: ActivatedRoute,
+  constructor(private tokenStorage: TokenStorageService,    
     private router: Router,
     private accountService: AccountService) {
     
@@ -41,20 +36,19 @@ export class LoginComponent implements OnInit {
   get f() { return this.form.controls; }
   onSubmit() {
     const { username, password } = this.form;
-
-    this.accountService.login(username, password).subscribe({
-      
-      next: data => {
-        debugger;
-        this.tokenStorage.saveToken(data.accessToken);
+    this
+    .accountService
+    .login(username, password)
+    .subscribe({            
+      next: (data) => { 
+        this.tokenStorage.saveToken(data?.jwtToken);
         this.tokenStorage.saveUser(data);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
-   
+        this.roles =  data?.userName; //this.tokenStorage.getUser().roles;
+        this.router.navigate(['./employee/list']);
       },
-      error: err => {
+      error: (err) => {
         this.router.navigate(['./employee/list']);
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;

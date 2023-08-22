@@ -15,6 +15,7 @@ export class ProductListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // get data based on resolver
     this.route.data.subscribe((response: any) => {
       this.products = response.products;
     });

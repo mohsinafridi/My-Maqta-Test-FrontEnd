@@ -13,9 +13,7 @@ const routes: Routes = [
     redirectTo: 'list'
   },  
   {
-    path: 'list',
-    component: ProductListComponent,
-    resolve: { products: ProductResolveService },
+    path: 'list',component: ProductListComponent, resolve: { products: ProductResolveService },
   },
   { path: 'product/:id', component: ProductDetailComponent },
 ];
